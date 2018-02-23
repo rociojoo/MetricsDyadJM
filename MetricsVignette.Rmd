@@ -1,0 +1,34 @@
+---
+title: "Using the metrics for dyad joint movement"
+output: html_notebook
+---
+
+This is an example of how to use the functions in metricsJM.R.
+
+## Load the necessary libraries and the R file
+
+```{r}
+library('pdist','polyclip','SDMTools','geoR')
+source('metricsJM.R')
+```
+
+## Deriving metrics for example data
+
+A and B are the tracks of the two individuals and Z contains the points of the border of the reference area
+
+```{r}
+load('exampledata.rda')
+Prox(A,B,delta=1)
+Cs.function(A,B)
+LixnT(A,B,Z)
+HAI(A,B,Z,delta=1) 
+jPPA(A,B,7) #7 is phi
+CSEM.function(A,B,delta=3)
+DI.function(A,B,delta.DI=1)
+#correlations are really simple
+Lon = cor(A[,1],B[,1])
+Lat = cor(A[,2],B[,2])
+Lonlat = (Lon+Lat)/2
+Speed = cor(pre.metrics(A,B)$distance1,pre.metrics(A,B)$distance2,use='pairwise.complete.obs')
+```
+
