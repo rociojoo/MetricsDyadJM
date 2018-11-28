@@ -1,14 +1,19 @@
 ---
 title: "Using the metrics for dyad joint movement"
-output: html_notebook
+output:
+  html_document:
+    df_print: paged
 ---
 
 This is an example of how to use the functions in metricsJM.R.
 
 ## Load the necessary libraries and the R file
 
-```{r}
-library('pdist','polyclip','SDMTools','geoR')
+```{r,message=FALSE}
+library(pdist)
+library(polyclip)
+library(SDMTools)
+library(geoR)
 source('metricsJM.R')
 ```
 
